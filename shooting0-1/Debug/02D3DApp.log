@@ -1,0 +1,19 @@
+﻿빌드 시작: 2017-06-22 오후 6:33:09
+     1>2 노드의 "C:\Users\박성진\Desktop\15강\shooting0-1\02D3DApp.vcxproj" 프로젝트(Build 대상)입니다.
+     1>C:\Program Files (x86)\MSBuild\Microsoft.Cpp\v4.0\V120\Microsoft.CppBuild.targets(381,5): warning MSB8028: The intermediate directory (Debug\) contains files shared from another project (shooting0-1.vcxproj).  This can lead to incorrect clean and rebuild behavior.
+     1>ClCompile:
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _WINDOWS /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Yu"stdafx.h" /Fp"Debug\ShootingGame.pch" /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt Game.cpp
+         Game.cpp
+       Link:
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\박성진\Desktop\15강\shooting0-1\Debug\ShootingGame.exe" /INCREMENTAL /NOLOGO dxguid.lib d3d9.lib d3dx9.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\Users\박성진\Desktop\15강\shooting0-1\Debug\ShootingGame.pdb" /SUBSYSTEM:WINDOWS /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\박성진\Desktop\15강\shooting0-1\Debug\ShootingGame.lib" /MACHINE:X86 Debug\02D3DApp.res
+         Debug\02D3DApp.obj
+         Debug\D3DApp.obj
+         Debug\Game.obj
+         Debug\Ground.obj
+         Debug\stdafx.obj
+         02D3DApp.vcxproj -> C:\Users\박성진\Desktop\15강\shooting0-1\Debug\ShootingGame.exe
+     1>"C:\Users\박성진\Desktop\15강\shooting0-1\02D3DApp.vcxproj" 프로젝트를 빌드했습니다(Build 대상).
+
+빌드했습니다.
+
+경과 시간: 00:00:00.35
