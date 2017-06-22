@@ -1,10 +1,3 @@
 ﻿C:\Program Files (x86)\MSBuild\Microsoft.Cpp\v4.0\V120\Microsoft.CppBuild.targets(381,5): warning MSB8028: The intermediate directory (Debug\) contains files shared from another project (shooting0-1.vcxproj).  This can lead to incorrect clean and rebuild behavior.
-  stdafx.cpp
-  Ground.cpp
   Game.cpp
-  D3DApp.cpp
-  02D3DApp.cpp
-c:\users\박성진\desktop\sjpark3737\shooting0-1\02d3dapp.cpp(148): warning C4101: 'ps' :참조되지 않은 지역 변수입니다.
-c:\users\박성진\desktop\sjpark3737\shooting0-1\02d3dapp.cpp(149): warning C4101: 'hdc' :참조되지 않은 지역 변수입니다.
-  코드를 생성하고 있습니다...
   02D3DApp.vcxproj -> C:\Users\박성진\Desktop\sjpark3737\shooting0-1\Debug\ShootingGame.exe

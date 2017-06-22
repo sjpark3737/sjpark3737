@@ -80,7 +80,7 @@ void CGame::OnInit()
 	D3DXMatrixRotationY(&m_sPlayer.matRotationY, m_sPlayer.fRotationY);
 
 	// Note: 주인공 미사일 설정
-	m_sPlayerBulletProperty.fBulletVelcoty = 0.01f;
+	m_sPlayerBulletProperty.fBulletVelcoty = 0.02f;
 	m_sPlayerBulletProperty.fScale = 0.08f;
 	D3DXMatrixScaling(&m_sPlayerBulletProperty.matScale, m_sPlayerBulletProperty.fScale, m_sPlayerBulletProperty.fScale, m_sPlayerBulletProperty.fScale);
 
