@@ -94,16 +94,16 @@ void CGame::OnInit()
 	for (i = 0; i < 100; i++)
 	{
 		m_Enemy[i].nLife = 0;
-		m_Enemy[i].dwAppearTime = 2000 + (i * 800);
+		m_Enemy[i].dwAppearTime = 2000 + (i * 800); // 2초뒤에 적생성
 		m_Enemy[i].dwOldFireTime = GetTickCount();
-		nRandomNum = rand() % 7;
+		nRandomNum = rand() % 7; // 적 생성 위치 랜덤하게 하는것
 		if (nRandomNum % 2)
 			m_Enemy[i].vPos.x = -1.0f * nRandomNum;
 		else
 			m_Enemy[i].vPos.x = (float)nRandomNum;
 
 		m_Enemy[i].vPos.y = 0.0f;
-		m_Enemy[i].vPos.z = 20.0f;
+		m_Enemy[i].vPos.z = 25.0f;
 
 		D3DXMatrixTranslation(&m_Enemy[i].matTranslation, m_Enemy[i].vPos.x, m_Enemy[i].vPos.y, m_Enemy[i].vPos.z);
 	}
@@ -116,7 +116,6 @@ void CGame::OnInit()
 	for (i = 0; i < 100; i++)
 		m_EnemyBullet[i].nLife = 0;
 
-	m_sPlayer.nLife = 3;
 	m_dwGameStartTime = GetTickCount();
 	
 	// 주인공 충돌 ( 최대 최소 정점 값 <= 모델 좌표 )	
