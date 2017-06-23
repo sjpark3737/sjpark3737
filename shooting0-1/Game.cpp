@@ -57,7 +57,7 @@ void CGame::OnInit()
 	m_pd3dDevice->SetTransform(D3DTS_PROJECTION, &m_matProj);
 	m_pd3dDevice->SetViewport(&vp);
 
-	// Note: 메쉬 생성
+	// 메쉬 생성
 	//D3DXCreateTeapot(m_pd3dDevice, &m_pTeapotMesh, NULL);
 	D3DXCreateSphere(m_pd3dDevice, 0.7f, 70, 40, &m_pTeapotMesh, NULL);
 	D3DXCreateCylinder(m_pd3dDevice, 2.0f, 2.0f, 10.0f, 15, 10, &m_pPlayerBulletMesh, NULL);
@@ -65,7 +65,7 @@ void CGame::OnInit()
 	D3DXCreateSphere(m_pd3dDevice, 0.2f, 20, 10, &m_pEnemyBulletMesh, NULL);
 	m_Ground.Create(m_pd3dDevice, 20, 6, 2.0f);
 
-	// Note: 주인공 설정			
+	// 주인공		
 	m_sPlayer.fScale = 0.7f;
 	m_sPlayer.fRotationY = -D3DXToRadian(90);
 	m_sPlayer.vPos = D3DXVECTOR3(0.0f, 0.0f, -9 * 2.0f);
@@ -79,12 +79,12 @@ void CGame::OnInit()
 	D3DXMatrixTranslation(&m_sPlayer.matTranslation, m_sPlayer.vPos.x, m_sPlayer.vPos.y, m_sPlayer.vPos.z);
 	D3DXMatrixRotationY(&m_sPlayer.matRotationY, m_sPlayer.fRotationY);
 
-	// Note: 주인공 미사일 설정
+	// 주인공 미사일
 	m_sPlayerBulletProperty.fBulletVelcoty = 0.02f;
 	m_sPlayerBulletProperty.fScale = 0.08f;
 	D3DXMatrixScaling(&m_sPlayerBulletProperty.matScale, m_sPlayerBulletProperty.fScale, m_sPlayerBulletProperty.fScale, m_sPlayerBulletProperty.fScale);
 
-	// Note: 적 캐릭터 설정
+	// 적 캐릭터
 	m_EnemyProperty.fScale = 1.0f;
 	m_EnemyProperty.fMoveVelcoty = 0.003f;
 	m_EnemyProperty.dwFireTime = 1200;
@@ -108,7 +108,7 @@ void CGame::OnInit()
 		D3DXMatrixTranslation(&m_Enemy[i].matTranslation, m_Enemy[i].vPos.x, m_Enemy[i].vPos.y, m_Enemy[i].vPos.z);
 	}
 
-	// Note: 적 미사일 설정
+	// 적 미사일
 	m_EnemyBulletProperty.fBulletVelcoty = 0.01f;
 	m_EnemyBulletProperty.fScale = 0.9f;
 	D3DXMatrixScaling(&m_EnemyBulletProperty.matScale, m_EnemyBulletProperty.fScale, m_EnemyBulletProperty.fScale, m_EnemyBulletProperty.fScale);
@@ -119,7 +119,7 @@ void CGame::OnInit()
 	m_sPlayer.nLife = 3;
 	m_dwGameStartTime = GetTickCount();
 	
-	// 주인공 충돌 정점 설정 ( 최대 최소 정점 값 <= 모델 좌표 )	
+	// 주인공 충돌 ( 최대 최소 정점 값 <= 모델 좌표 )	
 	D3DXVECTOR3 *pVertices;
 	m_pTeapotMesh->LockVertexBuffer(D3DLOCK_READONLY, (void**)&pVertices);
 	D3DXComputeBoundingBox(pVertices, m_pTeapotMesh->GetNumVertices(), D3DXGetFVFVertexSize(m_pTeapotMesh->GetFVF()), &m_sPlayer.vMin, &m_sPlayer.vMax);
@@ -154,17 +154,17 @@ void CGame::OnInit()
 	m_sPlayer.vMin = vMin1;
 	m_sPlayer.vMax = vMax1;
 
-	// 주인공 미사일 충돌 정점
+	// 주인공 미사일 충돌
 	m_pPlayerBulletMesh->LockVertexBuffer(D3DLOCK_READONLY, (void**)&pVertices);
 	D3DXComputeBoundingBox(pVertices, m_pPlayerBulletMesh->GetNumVertices(), D3DXGetFVFVertexSize(m_pPlayerBulletMesh->GetFVF()), &m_sPlayerBulletProperty.vMin, &m_sPlayerBulletProperty.vMax);
 	m_pPlayerBulletMesh->UnlockVertexBuffer();
 
-	// 적 충돌 정점	
+	// 적 충돌
 	m_pEnemyBoxMesh->LockVertexBuffer(D3DLOCK_READONLY, (void**)&pVertices);
 	D3DXComputeBoundingBox(pVertices, m_pEnemyBoxMesh->GetNumVertices(), D3DXGetFVFVertexSize(m_pEnemyBoxMesh->GetFVF()), &m_EnemyProperty.vMin, &m_EnemyProperty.vMax);
 	m_pEnemyBoxMesh->UnlockVertexBuffer();
 
-	// 적 미사일 충돌 정점
+	// 적 미사일 충돌
 	m_pEnemyBulletMesh->LockVertexBuffer(D3DLOCK_READONLY, (void**)&pVertices);
 	D3DXComputeBoundingBox(pVertices, m_pEnemyBoxMesh->GetNumVertices(), D3DXGetFVFVertexSize(m_pEnemyBulletMesh->GetFVF()), &m_EnemyBulletProperty.vMin, &m_EnemyBulletProperty.vMax);
 	m_pEnemyBulletMesh->UnlockVertexBuffer();
@@ -231,8 +231,8 @@ void CGame::OnUpdate()
 	OldTime = dwCurTime;
 	D3DXMATRIX matWorld;
 
-	// 게임 경과 시간 체크 부분
 	m_dwGameElapsedTime = dwCurTime - m_dwGameStartTime;
+
 
 	if (GetAsyncKeyState(VK_LEFT) < 0)
 	{
@@ -303,7 +303,7 @@ void CGame::OnUpdate()
 
 			D3DXMatrixTranslation(&m_Enemy[i].matTranslation, m_Enemy[i].vPos.x, m_Enemy[i].vPos.y, m_Enemy[i].vPos.z);
 
-			// Note: 살아 있는 적 캐릭터만이 미사일을 발사할 수 있으므로
+			// 살아 있는 적 캐릭터만이 미사일을 발사할 수 있으므로
 			if (dwCurTime - m_Enemy[i].dwOldFireTime >= m_EnemyProperty.dwFireTime)
 			{
 				m_Enemy[i].dwOldFireTime = dwCurTime;
@@ -347,8 +347,7 @@ void CGame::OnUpdate()
 		}
 	}
 
-	//------------------------------ 여기서부터 충돌 체크 부분 -----------------------------------------------------------//
-	// Note: 주인공과 적 캐릭터 충돌
+	// 주인공과 적 캐릭터 충돌
 	D3DXMatrixTranslation(&m_sPlayer.matTranslation, m_sPlayer.vPos.x, m_sPlayer.vPos.y, m_sPlayer.vPos.z);
 
 	//// 주인공의 충돌 박스
@@ -375,7 +374,7 @@ void CGame::OnUpdate()
 		}
 	}
 
-	// Note: 주인공과 적 총알 충돌
+	// 주인공과 적 총알 충돌
 	for (i = 0; i < 100; i++)
 	{
 		if (m_EnemyBullet[i].nLife > 0)
@@ -393,7 +392,7 @@ void CGame::OnUpdate()
 		}
 	}
 
-	// Note: 주인공 총알과 적 캐릭터 충돌
+	// 주인공 총알과 적 캐릭터 충돌
 	for (i = 0; i < 10; i++)
 	{
 		if (m_sPlayerBullet[i].nLife > 0)
@@ -403,7 +402,7 @@ void CGame::OnUpdate()
 			D3DXVec3TransformCoord(&vMin1, &m_sPlayerBulletProperty.vMin, &matWorld);
 			D3DXVec3TransformCoord(&vMax1, &m_sPlayerBulletProperty.vMax, &matWorld);
 
-			// Note: 적 캐릭터와 충돌 체크
+			// 적 캐릭터와 충돌 체크
 			for (j = 0; j < m_nEnemyIndex; j++)
 			{
 				if (m_Enemy[j].nLife > 0)
@@ -423,7 +422,7 @@ void CGame::OnUpdate()
 				}
 			}
 
-			// Note: 주인공 총알과 적 총알 충돌 체크
+			// 주인공 총알과 적 총알 충돌 체크
 			if (m_sPlayerBullet[i].nLife > 0)
 			{
 				for (j = 0; j < 100; j++)
